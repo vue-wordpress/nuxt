@@ -2,7 +2,7 @@
 
 <br>
 
-llll
+Wordpress REST API plugin for Nuxt.js providing an out-of-box routing and async data handling.
 
 <br>
 
@@ -80,6 +80,8 @@ export default {
 
 All you need to do to create new page's route in your app is creating it on in Wordpress Admin at _Pages_. It will automatiaclly be available under /page/<:page_slug> address.
 
+<br>
+
 ### Creating Posts
 
 <br>
@@ -115,7 +117,7 @@ this.$store.state.wp_rest_content.menus[YOUR_MENU_SLUG]
 
 <br>
 
-#### Free Extensions
+### Free Extensions
 
 - [Yoast SEO Extension](#yoast-extension)
 
@@ -123,15 +125,17 @@ this.$store.state.wp_rest_content.menus[YOUR_MENU_SLUG]
 
 <br>
 
-<a name="yoast-extension"></a>### Yoast SEO Extension
+<a name="yoast-extension"></a>
+#### Yoast SEO Extension
 
 <br>
 
-<a name="qtranslate-extension"></a>### qTranslate Extension
+<a name="qtranslate-extension"></a>
+#### qTranslate Extension
 
 <br>
 
-#### Paid Extensions
+### Paid Extensions
 
 <br>
 
@@ -141,7 +145,8 @@ this.$store.state.wp_rest_content.menus[YOUR_MENU_SLUG]
 
 <br>
 
-<a name="acf-extension"></a>### Advanced Custom Fields Extension
+<a name="acf-extension"></a>
+#### Advanced Custom Fields Extension
 
 <br>
 
@@ -220,7 +225,8 @@ The module comes with a preset providing basic layouting system based on:
 
 <br>
 
-<a name="divi-extension"></a>### DIVI Page Builder Extension
+<a name="divi-extension"></a>
+### DIVI Page Builder Extension
 
 <br>
 
