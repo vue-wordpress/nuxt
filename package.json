@@ -13,9 +13,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
-    "vue-wp-json": "^1.0.18"
+    "nuxt": "^2.7.1",
+    "nuxt-babel": "^1.0.1",
+    "vue-wp-json": "^1.0.21"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

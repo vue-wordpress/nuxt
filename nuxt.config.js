@@ -1,7 +1,7 @@
 import pkg from './package'
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
 
   /*
   ** Headers of the page
@@ -42,6 +42,20 @@ export default {
     '~/modules/wp.js'
   ],
 
+  wpJson: {
+    config: {
+      url: 'https://test.wp.newfantastic.com/',
+      lang: 'pl',
+      pages: {
+        home: 'sample-page'
+      },
+      menus: ['informacje', 'kontakt', 'dla-kupujacych', 'menu-glowne', 'testowe'],
+      asyncData: true
+    },
+    store: 'manual',
+    router: 'manual'
+  },
+
   /*
   ** Build configuration
   */
@@ -65,6 +79,18 @@ export default {
           plugin.options = Object.assign(plugin.options, { chunksSortMode: 'none' })
         }
       }
+
+      // if (ctx.isServer) {
+      //   config.externals = [
+      //     nodeExternals({
+      //       whitelist: [/^vue-wp-json/]
+      //     })
+      //   ]
+      // }
+      // console.log('cfg', config.module.rules)
+      // const babelLoader = config.module.rules.find((rule) => rule.loader === 'babel-loader')
+      // babelLoader.exclude = /node_modules\/vue-wp-json/
+      // babelLoader.test = /\.(js|es6)$/
     },
   }
 }
