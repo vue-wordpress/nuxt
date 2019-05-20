@@ -7,7 +7,6 @@ export default function nuxtBootstrapVue (moduleOptions) {
     src: path.resolve(__dirname, '../plugins/nuxt-wp-json.js'),
     filename: 'wpjson.js',
     options: this.options.wpJson
-    // ssr: false
   })
 
   let customPage = null

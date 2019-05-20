@@ -10,6 +10,9 @@ export default (ctx, inject) => {
   vuex.registerModules(ctx.store)
   vuex.loadBase(ctx.store.dispatch, false) // menus
   vuex.setLang(ctx.store.commit, 'pl') 
-  vuex.setConfig(ctx.store.commit, options.config) 
+  vuex.setConfig(ctx.store.commit, {
+    ...options.config,
+    asyncData: true
+  }) 
   
 }

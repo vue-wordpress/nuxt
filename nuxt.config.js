@@ -1,5 +1,7 @@
 import pkg from './package'
 
+const acf = require('./vue-wp-json-acf')
+
 export default {
   mode: 'universal',
 
@@ -44,16 +46,16 @@ export default {
 
   wpJson: {
     config: {
-      url: 'https://test.wp.newfantastic.com/',
+      url: 'https://wp.maanu.pl/',
       lang: 'pl',
       pages: {
         home: 'sample-page'
       },
-      menus: ['informacje', 'kontakt', 'dla-kupujacych', 'menu-glowne', 'testowe'],
-      asyncData: true
+      menus: ['informacje', 'kontakt', 'dla-kupujacych', 'menu-glowne', 'testowe']
     },
     store: 'manual',
-    router: 'manual'
+    router: 'manual',
+    plugins: [acf]
   },
 
   /*
