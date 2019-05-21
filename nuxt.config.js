@@ -1,7 +1,7 @@
 import pkg from './package'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
 
   /*
   ** Headers of the page
@@ -40,26 +40,20 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '~/modules/wp.js'
   ],
 
   wpJson: {
     config: {
-      url: 'https://test.wp.newfantastic.com/',
+      url: 'https://wp.maanu.pl/',
       lang: 'pl',
       pages: {
         home: 'sample-page'
       }
     },
     store: 'manual',
-    router: 'manual'
-  },
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    router: 'manual',
+    plugins: ['acf']
   },
 
   /*
@@ -67,7 +61,7 @@ export default {
   */
   build: {
 
-    transpile: ['vue-wp-json'],
+    transpile: ['vue-wp-json', 'vue-wp-json-acf'],
     /*
     ** You can extend webpack config here
     */
