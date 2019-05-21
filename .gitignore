@@ -86,6 +86,5 @@ assets
 components
 layouts
 middleware
-node_modules
 pages
 static

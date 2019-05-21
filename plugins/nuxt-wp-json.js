@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import WpJson from '../vue-wp-json/dist'
-import * as vuex from '../vue-wp-json/dist/plugin/initializers/store'
+import WpJson from 'vue-wp-json'
+import * as vuex from 'vue-wp-json/plugin/initializers/store'
 
-export default (ctx, inject) => {
-  const options = <%= serialize(options) %>
+export default async (ctx, inject) => {
+  const options = <%= serialize(options) %>;
 
   Vue.use(WpJson, options)
 

@@ -1,7 +1,5 @@
 import pkg from './package'
 
-const acf = require('./vue-wp-json-acf')
-
 export default {
   mode: 'universal',
 
@@ -41,58 +39,44 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
     '~/modules/wp.js'
   ],
 
   wpJson: {
     config: {
-      url: 'https://wp.maanu.pl/',
+      url: 'https://test.wp.newfantastic.com/',
       lang: 'pl',
       pages: {
         home: 'sample-page'
-      },
-      menus: ['informacje', 'kontakt', 'dla-kupujacych', 'menu-glowne', 'testowe']
+      }
     },
     store: 'manual',
-    router: 'manual',
-    plugins: [acf]
+    router: 'manual'
+  },
+  /*
+  ** Axios module configuration
+  */
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
   },
 
   /*
   ** Build configuration
   */
   build: {
+
+    transpile: ['vue-wp-json'],
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      // Run ESLint on save
-      // if (ctx.isDev && ctx.isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/
-      //   })
-      // }
-
       for (let plugin of config.plugins) {
         if (plugin.constructor.name === 'HtmlWebpackPlugin') {
           plugin.options = Object.assign(plugin.options, { chunksSortMode: 'none' })
         }
       }
-
-      // if (ctx.isServer) {
-      //   config.externals = [
-      //     nodeExternals({
-      //       whitelist: [/^vue-wp-json/]
-      //     })
-      //   ]
-      // }
-      // console.log('cfg', config.module.rules)
-      // const babelLoader = config.module.rules.find((rule) => rule.loader === 'babel-loader')
-      // babelLoader.exclude = /node_modules\/vue-wp-json/
-      // babelLoader.test = /\.(js|es6)$/
-    },
+    }
   }
 }
