@@ -48,7 +48,7 @@ export default {
       url: 'https://wp.maanu.pl/',
       lang: 'pl',
       pages: {
-        home: 'sample-page'
+        home: 'strona-domowa'
       }
     },
     store: 'manual',

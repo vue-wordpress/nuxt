@@ -18,7 +18,7 @@ export default async (ctx, inject) => {
   }
   
   vuex.loadBase(ctx.store.dispatch, false) // menus
-  vuex.setLang(ctx.store.commit, 'pl') 
+  vuex.setLang(ctx.store.commit, options.config.lang) 
   vuex.setConfig(ctx.store.commit, {
     ...options.config,
     asyncData: true
