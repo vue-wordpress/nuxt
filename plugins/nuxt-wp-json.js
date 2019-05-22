@@ -13,8 +13,10 @@ export default async (ctx, inject) => {
     plugins: []
   })
 
-  for(let plugin of options.plugins) {
-    registerPlugin(Vue, plugin, ctx.store)
+  if (options.plugins) {
+    for (let plugin of options.plugins) {
+      registerPlugin(Vue, plugin, ctx.store)
+    }
   }
   
   vuex.loadBase(ctx.store.dispatch, false) // menus
