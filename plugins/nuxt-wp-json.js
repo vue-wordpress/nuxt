@@ -1,25 +1,21 @@
 import Vue from 'vue'
 import WpJson from 'vue-wp-json'
 import * as vuex from 'vue-wp-json/plugin/initializers/store'
+import registerPlugin from 'vue-wp-json/plugin/registerPlugin'
 
 export default async (ctx, inject) => {
   const options = <%= serialize(options) %>;
 
   vuex.registerModules(ctx.store)
 
-  const plugins = []
-
-  for(let plugin of options.plugins) {
-    const x = await import(`../node_modules/vue-wp-json-${plugin}/index.js`)
-    const ext = 'default' in x ? x.default : x
-    ext.store = ctx.store
-    plugins.push(ext)
-  }
-
   Vue.use(WpJson, {
     ...options,
-    plugins
+    plugins: []
   })
+
+  for(let plugin of options.plugins) {
+    registerPlugin(Vue, plugin, ctx.store)
+  }
   
   vuex.loadBase(ctx.store.dispatch, false) // menus
   vuex.setLang(ctx.store.commit, 'pl') 
@@ -28,6 +24,5 @@ export default async (ctx, inject) => {
     asyncData: true
   }) 
 
-  // console.log(Object.keys(ctx.app.context), inject)
   
 }

@@ -3,16 +3,6 @@ import  { pagePrefix, postPrefix, routes } from 'vue-wp-json/router/routes'
 
 export default async function nuxtBootstrapVue (moduleOptions) {
 
-  // Register extensions
-  // if('nuxtPlugins' in this.options.wpJson) {
-  //   for(let plugin of this.options.wpJson.nuxtPlugins) {
-  //     this.addPlugin({
-  //       src: path.resolve(__dirname, `../plugins/${plugin}.js`),
-  //       filename: `${plugin}.js`
-  //     })
-  //   }
-  // }
-
   // Register core
   // It is under extensions, because this.addPlugin adds plugin at the beginning of the array
   this.addPlugin({
