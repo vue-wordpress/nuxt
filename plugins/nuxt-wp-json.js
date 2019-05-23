@@ -14,8 +14,12 @@ export default async (ctx, inject) => {
   })
 
   if (options.plugins) {
-    for (let plugin of options.plugins) {
-      registerPlugin(Vue, plugin, ctx.store)
+    if(Array.isArray(options.plugins)) {
+      for (let plugin of options.plugins) {
+        registerPlugin(Vue, plugin, ctx.store)
+      }
+    } else if (typeof options.plugins === 'string') {
+      registerPlugin(Vue, options.plugins, ctx.store)
     }
   }
   
