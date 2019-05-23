@@ -1,0 +1,38 @@
+{
+  "name": "nuxt-wp-json",
+  "version": "1.0.1",
+  "description": "💫  Wordpress REST API plugin for Nuxt.js with out-of-box routing and data handling 💫",
+  "main": "index.js",
+  "dependencies": {
+    "vue-wp-json": "1.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/new-fantastic/nuxt-wp-json.git"
+  },
+  "keywords": [
+    "nuxt",
+    "vue",
+    "wordpress",
+    "wp",
+    "rest",
+    "api",
+    "ssr",
+    "nuxt-wordpress",
+    "wp-json",
+    "wordpress-rest-api",
+    "rest-api",
+    "vue.js",
+    "nuxt.js",
+    "vuejs"
+  ],
+  "author": "Filip Jędrasik <filip@newfantastic.com> (Fifciuu)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/new-fantastic/nuxt-wp-json/issues"
+  },
+  "homepage": "https://github.com/new-fantastic/nuxt-wp-json#readme"
+}
