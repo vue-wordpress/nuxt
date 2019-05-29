@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import WpJson from 'vue-wp-json'
-import * as vuex from 'vue-wp-json/plugin/initializers/store'
-import registerPlugin from 'vue-wp-json/plugin/registerPlugin'
+import WpJson from '@vue-wordpress/core'
+import * as vuex from '@vue-wordpress/core/plugin/initializers/store'
+import registerPlugin from '@vue-wordpress/core/plugin/registerPlugin'
 
 export default async (ctx, inject) => {
   const options = <%= serialize(options) %>;

@@ -1,10 +1,16 @@
-# nuxt-wp-json
+# Vue Wordpress Nuxt.js Module
 
 <br>
 
- 💫 Wordpress REST API plugin for Nuxt.js with out-of-box routing and SSR data handling 💫 
+ WordPress module for Nuxt.js with full support for SSR and Nuxt.js PWA module.
+
+> More Info – https://nuxt.vuewordpress.io
+
+
 
 <br>
+
+
 
 - [Installation](#installation)
 
@@ -19,28 +25,17 @@
   - [Media](#media)
   - [Menus](#menus)
 
-- [PRO Version (Coming soon)](https://vuejs.shop/modules/nuxt-wp-json-pro)
-
-  - [Custom Post Types](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#custom-post-types)
-  - [Post Statuses](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#post-statuses)
-  - [Authentication](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#authentication)
-  - [Users](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#users)
-  - [Comments](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#comments)
-  - [Categories](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#categories)
-  - [Tags](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#tags)
-  - [Taxonomies](https://vuejs.shop/modules/nuxt-wp-json-pro/docs/#taxonomies)
-
-- [External Modules (Coming soon)](#additional-modules)
+- [Additional modules (Coming soon)](#additional-modules)
 
   - [Free Extensions](#free-extensions)
 
-    - [Yoast SEO Extension (Coming soon)](#yoast-extension)
-    - [qTranslate Extension (Coming soon)](https://vuejs.shop/modules/nuxt-wp-json-qtranslate)
+    - [Yoast SEO Module (Coming soon)](#yoast-extension)
+    - [i18n Module (Coming soon)](https://vuejs.shop/modules/@vue-wordpress/qtranslate)
 
   - [PRO Extensions](#pro-extensions)
 
-    - [Advanced Custom Fields Extension (Coming soon)](https://vuejs.shop/modules/nuxt-wp-json-acf)
-    - [DIVI Page Builder Extension (planned for Fall 2019)](https://vuejs.shop/modules/nuxt-wp-json-divi)
+    - [Advanced Custom Fields Extension (Coming soon)](https://vuejs.shop/modules/@vue-wordpress/acf)
+    - [DIVI Page Builder Extension (planned for Fall 2019)](https://vuejs.shop/modules/@vue-wordpress/divi)
 
 <br>
 
@@ -48,65 +43,144 @@
 
 <br>
 
-### A. Nuxt.js
+Go to your app's main directory and run:
 
-<br>
-
-#### 1. Go to your app's main directory and run:
-
-<br>
-
-```bash
-npm install nuxt-wp-json
+```
+npm install @vue-wordpress/nuxt
 ```
 
 or
 
-```bash
-yarn add nuxt-wp-json
+```
+yarn add @vue-wordpress/nuxt
 ```
 
-<br>
 
-#### 2. Go to your app's `nuxt.config.js` and register the package as a Nuxt.js module
 
 <br>
+
+
+
+Create Vuex Store in your application if it does not exist. You can do it by creating **index.js** file in **store directory** and put there content like:
+
+
 
 ```javascript
-export default {
-  ...
-  modules : [
-    'nuxt-wp-json', {
-      config: {
-        url: 'http://your-wordpress-url.com/',
-        pages: {
-          home: "home"
-          // Here put pairs like - routeName: "slugInApi"
-          // Then plugin will download page structure from /wp-json/wp/v2/pages?slug=home-page when current route is called 'home'
-        },
-        menus: [
-          "first-menu-slug",
-          "second-menu-slug"
-          // There provide your menus' slug, if you have only one menu, provide it as string. If you do not have any menu, set to false or just delete this key
-        ]
-      }
-  ]
-  ...
+export const state = () => ({
+
+})
+
+export const mutations = {
+
+}
+
+export const actions = {}
 ```
+
+
+
+<br>
+
+
+
+Open **nuxt.config.js** and add **@vue-wordpress/core** in `modules` section with additional configuration.
+
+
+
+
+
+```js
+modules: [
+  [
+    '@vue-wordpress/core',
+    {
+      config: {
+        url: 'https://wp.mysite.com/',
+        lang: 'en'
+      },
+      store: 'manual',
+      router: 'manual'
+    }
+  ]
+]
+```
+
+##### Using top level options
+
+```js
+modules: [
+  '@vue-wordpress/nuxt'
+],
+wpJson: {
+  config: {
+    url: 'https://wp.mysite.com/',
+    lang: 'en'
+  },
+  store: 'manual',
+  router: 'manual'
+}
+```
+
+
+
+**As we cannot access Router and Store from nuxt.config.js we have to set it as `'manual'`**. The module will do the job and inject them other way.
+
+
+
+As a last step we have to tell Nuxt to transpile the core module.
+
+```js
+build: {
+  transpile: ['@vue-wordpress/nuxt']
+}
+```
+
+If you use any extension you just need to add it to the transpile array:
+
+```js
+build: {
+  transpile: ['@vue-wordpress/nuxt', '@vue-wordpress/acf']
+}
+```
+
+That is all. Now you can use Vue Worpress module for Nuxt.js!
+
+<br>
 
 <br>
 
 ### B. Vue.js
 
-<br>
 
-If you want to use this module without Nuxt.js, you can use core package that this module is based on available here: <a href="https://github.com/new-fantastic/vue-wp-json">`vue-wp-json`</a>
 
 <br>
+
+
+
+If you want to use this module with **regular Vue.js**, you can use core module used by this package available here: <a href="https://github.com/vue-wordpress/core">`@vue-wordpress/core`</a>
+
+
+
+<br>
+
+
 
 ### C. Vue Storefront
 
+
+
 <br>
+
+
+
+If you want to use this module with **Vue Storefront**, we have created a dedicated package available here: 
+<a href="https://github.com/vue-wordpress/vsf">`@vue-wordpress/vsf`</a>
+
+
+
+<br>
+
+
 
 ## Usage
 
@@ -140,7 +214,7 @@ To be written.
 
 <br>
 
-To be able to use WordPress Menus in your app, you **have to install additional plugin in your WordPress** - **<a href="https://pl.wordpress.org/plugins/wp-rest-api-v2-menus/">WP-REST-API V2 Menus plugin</a>**. It extends native Wordpress REST API by adding a new endpoint with menus at `/wp-json/menus/v1/menus/`. After you have added the plugin `vue-wp-json` will automatically detect and store your menus at:
+To be able to use WordPress Menus in your app, you **have to install additional plugin in your WordPress** - **<a href="https://pl.wordpress.org/plugins/wp-rest-api-v2-menus/">WP-REST-API V2 Menus plugin</a>**. It extends native Wordpress REST API by adding a new endpoint with menus at `/wp-json/menus/v1/menus/`. After you have added the plugin `@vue-wordpress/core` will automatically detect and store your menus at:
 
 <br>
 
@@ -155,7 +229,7 @@ this.$store.state.wp_rest_content.menus[YOUR_MENU_SLUG]
 
 <br>
 
-More information about additional features available with PRO version of module will be available here: https://vuejs.shop/modules/vue-wp-json-pro
+More information about additional features available with PRO version of module will be available here: https://vuejs.shop/modules/@vue-wordpress/core-pro
 
 <br>
 
@@ -179,7 +253,7 @@ More information about additional features available with PRO version of module 
 
 <br>
 
-https://github.com/new-fantastic/vue-wp-json-yoast
+https://github.com/new-fantastic/@vue-wordpress/core-yoast
 
 <br>
 
@@ -189,7 +263,7 @@ https://github.com/new-fantastic/vue-wp-json-yoast
 
 <br>
 
-https://github.com/new-fantastic/vue-wp-json-qtranslate-x
+https://github.com/new-fantastic/@vue-wordpress/core-qtranslate-x
 
 <br>
 
@@ -209,7 +283,7 @@ https://github.com/new-fantastic/vue-wp-json-qtranslate-x
 
 <br>
 
-https://vuejs.shop/modules/vue-wp-json-acf
+https://vuejs.shop/modules/@vue-wordpress/core-acf
 
 <br>
 
@@ -219,4 +293,4 @@ https://vuejs.shop/modules/vue-wp-json-acf
 
 <br>
 
-https://vuejs.shop/modules/vue-wp-json-divi
+https://vuejs.shop/modules/@vue-wordpress/core-divi
