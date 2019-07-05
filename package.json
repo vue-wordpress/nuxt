@@ -1,10 +1,10 @@
 {
   "name": "@vue-wordpress/nuxt",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "💫  Wordpress REST API plugin for Nuxt.js with out-of-box routing and data handling 💫",
   "main": "index.js",
   "dependencies": {
-    "@vue-wordpress/core": "^1.x"
+    "@vue-wordpress/core": "^1.0.56"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
