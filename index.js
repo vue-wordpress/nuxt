@@ -1,5 +1,4 @@
 import path from 'path'
-import  { routes } from '@vue-wordpress/core/router/routes'
 
 export default async function nuxtBootstrapVue (moduleOptions) {
 
@@ -14,17 +13,5 @@ export default async function nuxtBootstrapVue (moduleOptions) {
     filename: 'wpjson.js',
     options: config
   })
-
-  if(config.router === true) {
-    const r = routes(true)
-    this.nuxt.options.router.extendRoutes = (nuxtRoutes, resolve) => {
-      nuxtRoutes.push(...r.map((route) => {
-  
-        let cmp = route.component.replace('../', 'node_modules/@vue-wordpress/core/')
-        return { ...route, component: resolve(cmp) }
-  
-      }))
-    }
-  }
 
 }
